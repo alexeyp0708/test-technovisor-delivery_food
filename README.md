@@ -13,7 +13,7 @@ add config file
 //....
     'modules'=>[
         'food'=>[
-            'basePath'=>'@vendor/alpa/test-technovisor-delivery_food/src',
+            'basePath'=>'@vendor/alpa/test-technovisor-delivery_food/src/food',
             'class'=>'App\\Alpa\\Food\\Module'
         ]
     ]
