@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Alpa\Food\Controllers;
+namespace App\Alpa\Food\controllers;
 
-use Yii\Web\Controller;
-
+use yii\web\Controller;
 class TestController extends Controller
 {
-    public function actionIndex(string $message='Успешно!')
+    public function actionIndex(string $message='Success')
     {
+        //return $this->render('index');
         return $this->render('index',['message'=>$message]);
     }
 }

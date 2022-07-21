@@ -1,8 +1,9 @@
 <?php
-/**
- * @var string $message 
- */
+
 use yii\helpers\Html;
 
+/**
+ * @var string $message
+ */
 ?>
 <?= Html::encode($message);?>

@@ -15,8 +15,5 @@
         "psr-4": {
             "App\\Alpa\\Food\\": "src/food/"
         }
-    },
-    "extra": {
-        "bootstrap": "App\\Alpa\\Food\\Module"
     }
 }
