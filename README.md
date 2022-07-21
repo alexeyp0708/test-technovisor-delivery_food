@@ -4,6 +4,6 @@
 
 #Install
 
-`composer config repositories.food --append vcs https://github.com/alexeyp0708/test-technovisor-delivery_food.git`
-`composer require alpa/test-technovisor-delivery_food dev-master`
+`composer config repositories.food --append vcs https://github.com/alexeyp0708/test-technovisor-delivery_food.git`  
+`composer require alpa/test-technovisor-delivery_food dev-master`  
 
