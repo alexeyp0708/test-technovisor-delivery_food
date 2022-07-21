@@ -1,7 +1,6 @@
 <?php
 
-
-namespace App\Modules\Food\Controllers;
+namespace App\Alpa\Food\Controllers;
 
 use Yii\Web\Controller;
 
