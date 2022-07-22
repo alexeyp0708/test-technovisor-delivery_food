@@ -36,7 +36,7 @@ add config file
     ]
     // or     
    /* 'controllerMap' => [
-        'migrate-module' => [
+        'migrate-modules' => [
             'class' => 'yii\console\controllers\MigrateController',
             'migrationNamespaces' => [
                 //...
