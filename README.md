@@ -46,4 +46,4 @@ add config file
         ],
     ] */
 ```
-
+run command `yii migrate-food`
