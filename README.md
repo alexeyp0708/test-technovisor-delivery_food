@@ -11,11 +11,39 @@ add config file
 
 ```php
 //....
+    'components'=>[
+    //...
+        'urlManager' => [
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,
+            'rules' => [
+            ],
+        ],
+    ],
     'modules'=>[
+        //...
         'food'=>[
             'basePath'=>'@vendor/alpa/test-technovisor-delivery_food/src/food',
             'class'=>'App\\Alpa\\Food\\Module'
         ]
+    ],
+    'controllerMap' => [
+        'migrate-food' => [
+            'class' => 'yii\console\controllers\MigrateController',
+            'migrationNamespaces' => ['App\\Alpa\\Food\\migrations'],
+            'migrationTable' => 'migration_food',
+        ],
     ]
+    // or     
+   /* 'controllerMap' => [
+        'migrate-module' => [
+            'class' => 'yii\console\controllers\MigrateController',
+            'migrationNamespaces' => [
+                //...
+                'App\\Alpa\\Food\\migrations'
+            ],
+            'migrationTable' => 'migration_modules',
+        ],
+    ] */
 ```
 
