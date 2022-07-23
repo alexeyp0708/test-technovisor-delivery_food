@@ -64,3 +64,9 @@ add config file for console
 To initialize the role policy
 run command `php yii food/rbac/init`
 
+assign a role to a user
+run command `php yii food/rbac/assign-role {user_id} {role_name}`
+Roles list:
+- worker 
+- food_manager
+- food_provider
