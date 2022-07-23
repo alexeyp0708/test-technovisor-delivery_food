@@ -31,7 +31,6 @@ add config file
         'migrate-food' => [
             'class' => 'yii\console\controllers\MigrateController',
             'migrationNamespaces' => ['App\\Alpa\\Food\\migrations'],
-            'migrationTable' => 'migration_food',
         ],
     ]
     // or     
@@ -41,9 +40,27 @@ add config file
             'migrationNamespaces' => [
                 //...
                 'App\\Alpa\\Food\\migrations'
-            ],
-            'migrationTable' => 'migration_modules',
+            ]
         ],
     ] */
 ```
 run command `yii migrate-food`
+
+
+add config file for console
+
+```php
+    'bootstrap' => [
+        // food
+        'food'
+    ],
+    'modules'=>[
+        'food'=>[
+            //'basePath'=>'@vendor/alpa/test-technovisor-delivery_food/src/food',
+            'class'=>'App\\Alpa\\Food\\Module'
+        ]
+    ],
+```
+To initialize the role policy
+run command `php yii food/rbac/init`
+
