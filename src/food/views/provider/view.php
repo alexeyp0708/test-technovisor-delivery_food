@@ -5,15 +5,17 @@ use yii\helpers\Url;
 
 /**
  * @var \App\Alpa\Food\models\Provider $provider;
- * @var string $delete_action;
- * @var string $edit_action;
+ * @var \App\Alpa\helpers\RoutesHelper\RoutesCollection $routes;
  */
 
 ?>
 
+<input type="button" value="Menu" onclick="location.href='<?=$routes->menu->index;?>'"/>
 <?php  if (\Yii::$app->user->can('food_provider')):?>
-    <input type="button" value="Edit" onclick="location.href='<?=$edit_action;?>'"/>
-    <input type="button" value="Delete" onclick="location.href='<?=$delete_action;?>'"/>
+    <input type="button" value="Orders" onclick="location.href='<?=$routes->order->index;?>'"/>
+    <input type="button" value="Edit" onclick="location.href='<?=$routes->provider->edit;?>'"/>
+    <input type="button" value="Delete"
+           onclick="if(window.confirm('Are you going to delete the resource ID:<?=$provider->id;?>?')){fetch('<?=$routes->provider->delete(['id'=>$provider->id]);?>',{method:'delete',headers:{'X-CSRF-Token':'<?=Yii::$app->request->getCsrfToken()?>'}}).then(()=>{location.href='<?=$routes->provider->index?>';});}"/>
 <?php  endif;?>
 <h2>
     <p>ID: <?=$provider->id?></p>

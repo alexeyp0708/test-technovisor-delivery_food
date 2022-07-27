@@ -1,15 +1,16 @@
 <?php
 
-
 namespace App\Alpa\Food\models;
+use App\Alpa\Core\ModelTrait;
 use Yii;
 //use yii\behaviors\TimestampBehavior;
-use yii\base\ErrorException;
 use yii\db\ActiveRecord;
 use yii\db\Expression;
 
-class Provider extends Model
+class Provider  extends ActiveRecord
 {
+    
+    use ModelTrait;
     /**
      * @property int|null $id;
      * @property string $name;
@@ -54,14 +55,14 @@ class Provider extends Model
         return $provider;
     }
     
-    public static function updateProvider(int $id,string $name, bool $is_enabled=true):Provider
+    public static function updateProvider(int $id,string $name, bool $is_enabled=true):?Provider
     {
         $provider=new static();
         $provider->id=$id;
         $provider->name=$name;
         $provider->is_enabled=$is_enabled;
         if(!$provider->save()){
-            throw new ErrorException('Failed to save');
+            return null;
         };
         return $provider;
     }
@@ -70,22 +71,21 @@ class Provider extends Model
      * @param int $id
      * @return \App\Alpa\Food\models\Provider|null
      */
-    public static function getProvider(int $id):Provider
+    public static function getProvider(int $id):?Provider
     {
         $provider= static::find()->where(['id'=>$id,'deleted_at'=>null])->one();
         if(empty($provider)){
-            throw new \yii\web\HttpException(404,'Page not found');
+            return null;
         }
         return $provider;
     }
     
-    public function deleteProvider(int $id):bool
+    public static function deleteProvider(int $id):bool
     {
-        Yii::$app->db
+        return (bool)Yii::$app->db
             ->createCommand()
-            ->update($this->tableName(), ['deleted_at'=>new Expression('NOW()')],['id'=>$id])
+            ->update(static::tableName(), ['deleted_at'=>new Expression('NOW()')],['id'=>$id])
             ->execute();
-        return true;
     }
     
     public function forceDeleteProvider(int $id):bool

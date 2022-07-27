@@ -1,26 +1,46 @@
 <?php
 
 
-namespace App\Alpa\Food\helpers\RoutesHelper;
+namespace App\Alpa\helpers\RoutesHelper;
 
 use yii\helpers\Url;
 class RouteEntry
 {
     private array $route;
+    private $scheme;
     private string $name;
-    public function __construct(string $name,array $route=[])
+
+    /**
+     * RouteEntry constructor.
+     * @param string $name
+     * @param array|string $route
+     * @param false $scheme
+     */
+    public function __construct(string $name, $route=[],$scheme = false)
     {        
-        $this->init($name,$route);
+        $this->init($name,$route,$scheme);
     }
-    
-    private function init(string $name,array $route)
+
+    /**
+     * @param string $name
+     * @param array|string $route
+     * @param false $scheme
+     */
+    private function init(string $name,$route,$scheme = false)
     {
+        $this->scheme=$scheme;
         $this->setName($name);
         $this->set($route);
     }
-    
-    final public function set(array $route)
+
+    /**
+     * @param array|string $route
+     */
+    final public function set($route)
     {
+        if(is_string($route)){
+            $route=[$route];
+        }
         $this->route=$route;
     }
      
@@ -36,7 +56,7 @@ class RouteEntry
     
     final public function copySelf(array $extra_params=[]):RouteEntry
     {
-        return new static($this->name,$this->get($extra_params));           
+        return new static($this->name,$this->get($extra_params),$this->scheme);           
     }
     final public function setName(string $name):void
     {
@@ -49,7 +69,7 @@ class RouteEntry
     
     public function getRouteUrl(array $extra_params=[]):string
     {
-        return Url::toRoute($this->get($extra_params));    
+        return Url::toRoute($this->get($extra_params),$this->scheme);    
     }
     
     final public function __toString()

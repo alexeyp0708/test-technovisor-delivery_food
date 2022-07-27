@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Alpa\Food\helpers\RoutesHelper;
+namespace App\Alpa\helpers\RoutesHelper;
 
 
 class ArrayObject extends \ArrayObject

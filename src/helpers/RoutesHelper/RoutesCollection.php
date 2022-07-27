@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Alpa\Food\helpers\RoutesHelper;
+namespace App\Alpa\helpers\RoutesHelper;
 
 final class RoutesCollection extends  ArrayObject
 {
@@ -25,8 +25,8 @@ final class RoutesCollection extends  ArrayObject
     private static function initData($key, $value):RouteEntry
     {
         if(is_array($value)){
-            $value=new RouteEntry($key,$value);
-        }
+            $value=new RouteEntry($key,...$value);
+        } 
         if(!($value instanceof RouteEntry)){
             throw new \TypeError('Wrong value type');
         }
@@ -49,14 +49,14 @@ final class RoutesCollection extends  ArrayObject
         $this->global_params=$params;
     }
     
-    public function offsetGet($key):RouteEntry
+   /* public function offsetGet($key):RouteEntry
     {
         $route=parent::offsetGet($key);
         if(!empty ($route)){
             $route=$route->copySelf($this->global_params);
         }
         return $route;
-    }
+    }*/
 
     public function __call($name, $arguments)
     {
