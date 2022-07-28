@@ -61,6 +61,7 @@ add config file for console
         ]
     ],
 ```
+init rbac command 'yii migrate --migrationPath=@yii/rbac/migrations'
 To initialize the role policy
 run command `php yii food/rbac/init`
 
